@@ -71,7 +71,7 @@ function sevichat($) {
                     var next = currentMsg.next('.message');
                     if (!next.length) {
                         next = currentMsg.closest('.monologue')
-                            .next('.monologue').find('.message:first');
+                            .nextAll('.monologue').eq(0).find('.message:first');
                     }
                     if (next.length) setCurrentMsg(next);
                     break;
@@ -79,7 +79,7 @@ function sevichat($) {
                     var prev = currentMsg.prev('.message');
                     if (!prev.length) {
                         prev = currentMsg.closest('.monologue')
-                            .prev('.monologue').find('.message:last');
+                            .prevAll('.monologue').eq(0).find('.message:last');
                     }
                     if (prev.length) setCurrentMsg(prev);
                     break;
