@@ -92,7 +92,7 @@ function sevichat($) {
                     setCurrentMsg();
                     break;
                 case 83:  // s
-                    currentMsg.find('.stars .vote').click();
+                    currentMsg.find('.stars:first .vote').click();
                     setCurrentMsg();
                     break;
                 case 89:  // y
