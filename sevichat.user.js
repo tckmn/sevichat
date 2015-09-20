@@ -17,7 +17,7 @@ function withJQuery(f) {
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.textContent = '(' + f + ')(jQuery)';
-    document.body.appendChild(script);
+    document.head.appendChild(script);
 }
 withJQuery(sevichat);
 
