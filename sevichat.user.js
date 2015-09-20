@@ -106,6 +106,8 @@ function sevichat($) {
 
     input.blur(function(e) {
         setCurrentMsg();
-        $('#cancel-editing-button').click();
+        if ($('#cancel-editing-button').css('display') !== 'none') {
+            $('#cancel-editing-button').click();
+        }
     });
 }
