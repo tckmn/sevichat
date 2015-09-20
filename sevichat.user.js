@@ -70,16 +70,16 @@ function sevichat($) {
                 case 74:  // j
                     var next = currentMsg.next('.message');
                     if (!next.length) {
-                        next = currentMsg.closest('.monologue').next()
-                            .find('.message:first');
+                        next = currentMsg.closest('.monologue')
+                            .next('.monologue').find('.message:first');
                     }
                     if (next.length) setCurrentMsg(next);
                     break;
                 case 75:  // k
                     var prev = currentMsg.prev('.message');
                     if (!prev.length) {
-                        prev = currentMsg.closest('.monologue').prev()
-                            .find('.message:last');
+                        prev = currentMsg.closest('.monologue')
+                            .prev('.monologue').find('.message:last');
                     }
                     if (prev.length) setCurrentMsg(prev);
                     break;
