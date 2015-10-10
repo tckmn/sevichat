@@ -53,10 +53,12 @@ function sevichat($) {
             e.preventDefault();
             switch (e.which) {
                 case 68:  // d
-                    $.post('http://chat.stackexchange.com/messages/' +
-                        currentMsg.attr('id').split('-')[1] + '/delete', {
-                            fkey: fkey().fkey
-                        });
+                    if (confirm('ya sure about that?')) {
+                        $.post('http://chat.stackexchange.com/messages/' +
+                            currentMsg.attr('id').split('-')[1] + '/delete', {
+                                fkey: fkey().fkey
+                            });
+                    }
                     setCurrentMsg();
                     break;
                 case 69:  // e
