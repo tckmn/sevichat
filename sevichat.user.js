@@ -28,7 +28,10 @@ function sevichat($) {
     var setCurrentMsg = function(m) {
         if (currentMsg) currentMsg.css('background-color', '');
         currentMsg = m;
-        if (m) m.css('background-color', 'rgba(0, 255, 0, 0.1)');
+        if (m) {
+            m.css('background-color', 'rgba(0, 255, 0, 0.1)');
+            document.body.scrollTop = m[0].offsetTop;
+        }
     };
 
     var clickMenuItem = function(item) {
