@@ -45,6 +45,13 @@ function sevichat($) {
         }, 10);
     };
 
+    var deselect = function(e) {
+        setCurrentMsg();
+        if ($('#cancel-editing-button').css('display') !== 'none') {
+            $('#cancel-editing-button').click();
+        }
+    };
+
     input.keydown(function(e) {
         if (!currentMsg) {
             // ctrl+O
@@ -105,14 +112,12 @@ function sevichat($) {
                         currentMsg.find('.action-link').attr('href'));
                     setCurrentMsg();
                     break;
+                case 27:  // esc
+                    deselect(e);
+                    break;
             }
         }
     });
 
-    input.blur(function(e) {
-        setCurrentMsg();
-        if ($('#cancel-editing-button').css('display') !== 'none') {
-            $('#cancel-editing-button').click();
-        }
-    });
+    input.blur(deselect);
 }
