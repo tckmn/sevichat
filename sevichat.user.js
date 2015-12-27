@@ -100,7 +100,10 @@ function sevichat($) {
                     setCurrentMsg();
                     break;
                 case 82:  // r
-                    currentMsg.find('.newreply').click();
+                    var replyBtn = currentMsg.find('.newreply');
+                    if (replyBtn.length) replyBtn.click();
+                    else $('#input').val(':' + currentMsg.attr('id')
+                        .split('-')[1] + ' ' + $('#input').val().trimLeft());
                     setCurrentMsg();
                     break;
                 case 83:  // s
