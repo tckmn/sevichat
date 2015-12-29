@@ -77,7 +77,9 @@ function sevichat($) {
                     msgEditing = currentMsg.attr('id');
                     clickMenuItem('.edit');
                     if (savedEdits[msgEditing]) {
-                        $('#input').val(savedEdits[msgEditing]);
+                        setTimeout(function() {
+                            $('#input').val(savedEdits[msgEditing]);
+                        }, 1000);
                     }
                     setCurrentMsg();
                     break;
