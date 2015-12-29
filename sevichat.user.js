@@ -45,15 +45,17 @@ function sevichat($) {
         }, 10);
     };
 
-    var deselect = function(e) {
-        setCurrentMsg();
-        if ($('#cancel-editing-button').css('display') !== 'none') {
-            $('#cancel-editing-button').click();
-        }
-    };
+    var savedEdits = {}, msgEditing;
 
     input.keydown(function(e) {
-        if (!currentMsg) {
+        if (e.which == 27) {
+            e.preventDefault();
+            if ($('#cancel-editing-button').css('display') !== 'none') {
+                savedEdits[msgEditing] = this.value;
+                $('#cancel-editing-button').click();
+            }
+            setCurrentMsg();
+        } else if (!currentMsg) {
             // ctrl+O
             if (e.which == 79 && e.ctrlKey) {
                 e.preventDefault();
@@ -72,7 +74,11 @@ function sevichat($) {
                     setCurrentMsg();
                     break;
                 case 69:  // e
+                    msgEditing = currentMsg.attr('id');
                     clickMenuItem('.edit');
+                    if (savedEdits[msgEditing]) {
+                        $('#input').val(savedEdits[msgEditing]);
+                    }
                     setCurrentMsg();
                     break;
                 case 70:  // f
@@ -115,12 +121,11 @@ function sevichat($) {
                         currentMsg.find('.action-link').attr('href'));
                     setCurrentMsg();
                     break;
-                case 27:  // esc
-                    deselect(e);
-                    break;
             }
         }
     });
 
-    input.blur(deselect);
+    // fire our listener before any other listener
+    var kdevts = $('#input').data('events').keydown;
+    kdevts.unshift(kdevts.pop());
 }
